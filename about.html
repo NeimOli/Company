@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team - The Elevator Company</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --accent-color: #60a5fa;
+      --text-color: #1f2937;
+      --light-bg: #f8fafc;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background-color: var(--light-bg);
+    }
+
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--text-color);
+      margin: 0 1rem;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .team-section {
+      padding: 8rem 0 5rem 0;
+      background: linear-gradient(to bottom, #ffffff, var(--light-bg));
+    }
+
+    .team-card {
+      background: white;
+      border-radius: 1rem;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .team-member-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin: -50px auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-card .card-body {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      width: 35px;
+      height: 35px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--light-bg);
+      color: var(--primary-color);
+      margin: 0 0.3rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .team-banner {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      height: 150px;
+      border-radius: 1rem 1rem 0 0;
+    }
+
+    .team-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-subtitle {
+      color: var(--text-color);
+      opacity: 0.8;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="TEC" style="width: 70px; height: 70px; margin-right: 20px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">Our Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h1 class="team-title">Meet Our Team</h1>
+        <p class="team-subtitle">The experts behind our success</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="team-card">
+            <div class="team-banner"></div>
+            <img src="https://scontent.fktm21-2.fna.fbcdn.net/v/t1.6435-9/37601734_10216325775487271_3243307075689775104_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeH5QZIcNpyH90eqSynmT3UjyobigiIJsa7KhuKCIgmxrlOSvj7JDj_TojU-7vaaCTQEs6x5BXYTdJHT3V7rBdwJ&_nc_ohc=V522b8Jm-goQ7kNvgHKPgwr&_nc_zt=23&_nc_ht=scontent.fktm21-2.fna&_nc_gid=Abv679v9a7Kqz7gzVgyVyGb&oh=00_AYCQdJ-Oj_55gEJg6WOcegOGTTZrjAnaFuwQKbTmF7IBFA&oe=67B47DA5" class="team-member-img" alt="Nirmal Niraula">
+            <div class="card-body">
+              <h3 class="card-title mb-1">Nirmal Niraula</h3>
+              <p class="text-muted mb-3">Founder & CEO</p>
+              <p class="card-text">Visionary leader with a passion for innovation in vertical transportation.</p>
+              <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/nirmal.niraula.14" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="team-card">
+            <div class="team-banner"></div>
+            <img src="https://scontent.fktm21-2.fna.fbcdn.net/v/t39.30808-6/446925712_766022852322079_3237655065553033112_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFWdxRBmnn6AI331ClfbLc2OXC6SLzKjJc5cLpIvMqMl9WvVkZn6mgy16HLEXvs-2mxgaA9-uiSjPRdHtXwo757&_nc_ohc=xxWE0M1_JZUQ7kNvgFVEFcJ&_nc_zt=23&_nc_ht=scontent.fktm21-2.fna&_nc_gid=AxtGhMe21pH_Qlan07ekrXx&oh=00_AYAyA5y8IqkLWPaeDHY7Z2tghnPARE9FFqwWODKXLQeU_w&oe=6791C780" class="team-member-img" alt="Govinda Bahadur Oli">
+            <div class="card-body">
+              <h3 class="card-title mb-1">Govinda Bahadur Oli</h3>
+              <p class="text-muted mb-3">Director of Operations</p>
+              <p class="card-text">Leading our operations with over 15 years of experience in the elevator industry.</p>
+              <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/govinda.oli.161" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>

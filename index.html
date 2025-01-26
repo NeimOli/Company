@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Elevator Company</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Custom Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --accent-color: #fbbf24;
+      --text-color: #1f2937;
+      --light-bg: #f8fafc;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+    }
+
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--text-color);
+      margin: 0 1rem;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .hero-section {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1565951802825-4e73f1dcd0c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-custom {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3);
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 1rem;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+      padding: 2rem;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stats-section {
+      background-color: var(--light-bg);
+      padding: 5rem 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .contact-form {
+      background: white;
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-topic-select {
+      background-color: white;
+      border: 1px solid #e5e7eb;
+      padding: 0.8rem 1.2rem;
+      border-radius: 0.5rem;
+      color: var(--text-color);
+      font-size: 1rem;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .contact-topic-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      outline: none;
+    }
+
+    .contact-topic-select option {
+      padding: 10px;
+      font-size: 1rem;
+    }
+
+    .form-control {
+      padding: 0.8rem 1.2rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e5e7eb;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    footer {
+      background-color: #1f2937;
+      color: white;
+      padding: 3rem 0;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    /* Chatbot Styles */
+    .chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .chat-circle {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .chat-circle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .chat-circle i {
+      color: white;
+      font-size: 24px;
+    }
+
+    .notification-dot {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .chatbot-widget {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      width: 280px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .chatbot-widget.active {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .chatbot-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 3px;
+      transition: transform 0.3s ease;
+    }
+
+    .chat-close:hover {
+      transform: rotate(90deg);
+    }
+
+    .chatbot-body {
+      height: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-messages {
+      flex-grow: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .message {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .bot-message {
+      padding-right: 15%;
+    }
+
+    .user-message {
+      flex-direction: row-reverse;
+      padding-left: 15%;
+    }
+
+    .bot-icon {
+      background: var(--primary-color);
+      color: white;
+      padding: 6px;
+      border-radius: 50%;
+      margin-right: 8px;
+      font-size: 0.8rem;
+    }
+
+    .message-content {
+      background: #f0f2f5;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      background: #f8f9fa;
+      border-top: 1px solid #eee;
+    }
+
+    .chat-input input {
+      flex-grow: 1;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      margin-right: 8px;
+      font-size: 0.85rem;
+    }
+
+    .chat-input button {
+      padding: 8px 12px;
+    }
+
+    @media (max-width: 480px) {
+      .chatbot-widget {
+        width: 260px;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .chatbot-widget {
+        width: 260px;
+        bottom: 10px;
+        right: 10px;
+      }
+    }
+
+    /* Add styles for the popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      text-align: center;
+    }
+    
+    .popup.show {
+      display: block;
+    }
+    
+    .popup-content {
+      margin-bottom: 15px;
+    }
+    
+    .popup-close {
+      padding: 8px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .popup-close:hover {
+      background-color: var(--secondary-color);
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      background-color: var(--light-bg);
+      padding: 5rem 0;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 1rem;
+      border: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+      padding: 2rem;
+    }
+
+    .testimonial-img {
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .testimonial-content {
+      margin-top: 1.5rem;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--primary-color);
+    }
+
+    .testimonial-position {
+      font-size: 0.9rem;
+      color: var(--text-color);
+    }
+
+    /* Client List Section Styles */
+    .client-list-section {
+      background-color: #f8f9fa;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .client-logo {
+      text-align: center;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .client-logo img {
+      max-width: 120px;
+      height: auto;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .client-logo:hover img {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .client-name {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    /* Topic Selection Styles */
+    .topic-select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: white;
+      color: var(--text-color);
+      font-size: 0.9rem;
+    }
+
+    .topic-select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+    }
+
+    .topic-select option {
+      padding: 8px;
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-toggler:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+      width: 1.5em;
+      height: 1.5em;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        margin-top: 1rem;
+      }
+
+      .nav-link {
+        padding: 0.5rem 1rem;
+        margin: 0.25rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="images/logo.png" alt="TEC" style="width: 70px; height: 70px; margin-right: 20px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Location</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="container">
+      <div class="hero-content text-center text-white" data-aos="fade-up">
+        <h1 class="hero-title">Elevating Standards<br>Setting New Heights</h1>
+        <p class="hero-subtitle">Your trusted partner in vertical transportation solutions</p>
+        <a href="#services" class="btn btn-custom btn-lg">Explore Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-5">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="display-4 fw-bold">Our Services</h2>
+        <p class="lead text-muted">Comprehensive elevator solutions for every building</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card text-center">
+            <div class="feature-icon mx-auto">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h3>Sales</h3>
+            <p>New elevator sales with customized solutions to meet your specific requirements.</p>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card text-center">
+            <div class="feature-icon mx-auto">
+              <i class="fas fa-cog"></i>
+            </div>
+            <h3>Installation</h3>
+            <p>Professional installation of new elevators with the latest safety features and technology.</p>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-card text-center">
+            <div class="feature-icon mx-auto">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>Maintenance</h3>
+            <p>Regular maintenance and servicing to ensure optimal performance and longevity.</p>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-card text-center">
+            <div class="feature-icon mx-auto">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <h3>Modernization</h3>
+            <p>Upgrade existing elevators with modern technology and safety features.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3" data-aos="fade-up">
+          <div class="stat-card">
+            <div class="stat-number" data-count="205">0</div>
+            <p class="text-muted">Installations</p>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-card">
+            <div class="stat-number" data-count="200">0</div>
+            <p class="text-muted">Happy Clients</p>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-card">
+            <div class="stat-number" data-count="18">0</div>
+            <p class="text-muted">Team Members</p>
+          </div>
+        </div>
+        <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-card">
+            <div class="stat-number" data-count="18">0</div>
+            <p class="text-muted">Years Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5" data-aos="fade-up">
+          <h2 class="display-4 fw-bold">What Our Clients Say</h2>
+          <p class="lead text-muted">Hear from our satisfied customers about their experience with our services</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-card">
+            <div class="testimonial-img">
+              <img src="Images/client1.jpg" alt="Satisfied Client" class="img-fluid rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+            </div>
+            <div class="testimonial-content">
+              <p class="testimonial-text">"The Elevator Company has exceeded our expectations with their exceptional service and professionalism. Their maintenance team is always prompt and thorough."</p>
+              <h5 class="testimonial-author">Hotel Yak and Yeti</h5>
+              <p class="testimonial-position">Building Manager</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-card">
+            <div class="testimonial-img">
+              <img src="Images/client2.jpg" alt="Happy Customer" class="img-fluid rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+            </div>
+            <div class="testimonial-content">
+              <p class="testimonial-text">"We've been using their services for over 5 years now. Their attention to detail and commitment to safety is unmatched in the industry."</p>
+              <h5 class="testimonial-author">Hotel Radison</h5>
+              <p class="testimonial-position">Property Owner</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-card">
+            <div class="testimonial-img">
+              <img src="Images/client3.jpg" alt="Satisfied Customer" class="img-fluid rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
+            </div>
+            <div class="testimonial-content">
+              <p class="testimonial-text">"Their emergency response time is incredible. We feel confident knowing our elevators are in such capable hands."</p>
+              <h5 class="testimonial-author">Star Hospital</h5>
+              <p class="testimonial-position">Facility Director</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mb-5" data-aos="fade-up">
+          <h2 class="display-4 fw-bold text-white">Our Location</h2>
+          <p class="lead text-white-50">Visit us or get in touch</p>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-10" data-aos="fade-up">
+          <div style="width: 100%; height: 400px; border-radius: 10px; overflow: hidden;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d220.77214183498183!2d85.28101570944726!3d27.693837799999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19f225e50df9%3A0xcc056384b16b7810!2sThe%20Elevator%20Company%20Pvt.Ltd.!5e0!3m2!1sen!2snp!4v1705834509761!5m2!1sen!2snp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <div class="p-4" style="background: rgba(255, 255, 255, 0.1); border-radius: 10px;">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <i class="fas fa-map-marker-alt fa-2x mb-2" style="color: var(--accent-color);"></i>
+                <h5 class="text-white">Address</h5>
+                <p class="text-white-50">Kathmandu,Nepal.</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <i class="fas fa-phone fa-2x mb-2" style="color: var(--accent-color);"></i>
+                <h5 class="text-white">Phone</h5>
+                <p class="text-white-50">+977 985-1003250</p>
+              </div>
+              <div class="col-md-4 mb-3">
+                <i class="fas fa-envelope fa-2x mb-2" style="color: var(--accent-color);"></i>
+                <h5 class="text-white">Email</h5>
+                <p class="text-white-50">info@elevatorcompany.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="contact-form">
+            <div class="text-center mb-4">
+              <h4 class="display-6 fw-bold text-dark">Send us a Message</h4>
+              <div class="mx-auto" style="width: 50px; height: 3px; background: var(--primary-color); margin-top: 10px;"></div>
+            </div>
+            <form action="https://formsubmit.co/neemoli52@gmail.com" method="POST" id="contactForm">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_subject" value="New Contact Form Submission">
+              <input type="hidden" name="_template" value="box">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" name="email" class="form-control form-control-lg" placeholder="Your Email" required>
+                </div>
+                <div class="col-12">
+                  <select name="topic" class="contact-topic-select form-control-lg" required>
+                    <option value="">Select Topic</option>
+                    <option value="installation">New Installation Inquiry</option>
+                    <option value="maintenance">Maintenance Service</option>
+                    <option value="repair">Repair Request</option>
+                    <option value="emergency">Emergency Support</option>
+                    <option value="quote">Price Quote</option>
+                    <option value="complaint">Complaint</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <textarea name="message" class="form-control form-control-lg" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-custom btn-lg w-100">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Chatbot Widget -->
+  <div class="chatbot-container">
+    <div class="chat-circle" id="chat-circle">
+      <i class="fas fa-comment-dots"></i>
+      <span class="notification-dot"></span>
+    </div>
+    <div class="chatbot-widget" id="chatbot">
+      <div class="chatbot-header">
+        <div class="chatbot-title">
+          <i class="fas fa-robot"></i>
+          <span>TES Assistant</span>
+        </div>
+        <button class="chat-close" id="chat-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chatbot-body" id="chatbot-body">
+        <div class="chat-messages" id="chat-messages">
+          <div class="message bot-message">
+            <i class="fas fa-robot bot-icon"></i>
+            <div class="message-content">
+              Hello! I'm your elevator assistant. How can I help you today?
+            </div>
+          </div>
+        </div>
+        <div class="chat-input">
+          <select class="topic-select" id="messageTopicSelect">
+            <option value="">Select Topic</option>
+            <option value="maintenance">Elevator Maintenance</option>
+            <option value="installation">New Installation</option>
+            <option value="repair">Repair Service</option>
+            <option value="emergency">Emergency Support</option>
+            <option value="quote">Get Quote</option>
+            <option value="other">Other Inquiry</option>
+          </select>
+          <input type="text" id="user-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+          <button onclick="sendMessage()">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add popup HTML -->
+  <div class="popup" id="thankYouPopup">
+    <div class="popup-content">
+      <h4>Thank You!</h4>
+      <p>Your message has been sent successfully.</p>
+    </div>
+    <button class="popup-close" onclick="closePopup()">Close</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h4 class="mb-4">The Elevator Company</h4>
+          <p class="mb-0">Delivering excellence in vertical transportation since 2010</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-light">
+      <div class="text-center">
+        <p class="mb-0">&copy; 2025 The Elevator Company. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    $('.stat-number').each(function () {
+      $(this).prop('Counter', 0).animate({
+        Counter: $(this).data('count')
+      }, {
+        duration: 2000,
+        easing: 'swing',
+        step: function (now) {
+          $(this).text(Math.ceil(now));
+        }
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Chatbot functionality
+    let isChatOpen = true;
+
+    function toggleChat() {
+      const chatBody = document.getElementById('chatbot-body');
+      const minimizeIcon = document.querySelector('#chat-minimize i');
+      
+      if (isChatOpen) {
+        chatBody.style.display = 'none';
+        minimizeIcon.className = 'fas fa-plus';
+      } else {
+        chatBody.style.display = 'flex';
+        minimizeIcon.className = 'fas fa-minus';
+      }
+      
+      isChatOpen = !isChatOpen;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('user-input');
+      const message = input.value.trim().toLowerCase();
+      
+      if (message) {
+        addMessage(input.value.trim(), 'user');
+        input.value = '';
+        
+        // Process user message and get appropriate response
+        const response = getBotResponse(message);
+        setTimeout(() => {
+          addMessage(response, 'bot');
+        }, 500);
+      }
+    }
+
+    function getBotResponse(message) {
+      // Keywords for different categories
+      const keywords = {
+        installation: ['install', 'installation', 'setup', 'put', 'new'],
+        maintenance: ['maintenance', 'service', 'repair', 'fix', 'broken', 'maintain'],
+        safety: ['safe', 'safety', 'security', 'emergency', 'risk'],
+        cost: ['cost', 'price', 'expensive', 'cheap', 'quote', 'pricing'],
+        contact: ['contact', 'call', 'email', 'phone', 'reach', 'support'],
+        hours: ['hours', 'time', 'schedule', 'available', 'open'],
+        types: ['type', 'kinds', 'models', 'different', 'options'],
+        company: ['company', 'business', 'about', 'history', 'experience'],
+        location: ['location', 'where', 'address', 'office', 'located']
+      };
+
+      // Check for greetings
+      if (/^(hi|hello|hey|greetings|good morning|good afternoon|good evening)/.test(message)) {
+        return "Hello! How can I assist you with our elevator services today?";
+      }
+
+      // Check for gratitude
+      if (/^(thanks|thank you|thx|ty)/.test(message)) {
+        return "You're welcome! Is there anything else I can help you with?";
+      }
+
+      // Check for goodbye
+      if (/^(bye|goodbye|see you|farewell)/.test(message)) {
+        return "Thank you for chatting with us! Have a great day!";
+      }
+
+      // Check each category for keywords
+      for (const [category, words] of Object.entries(keywords)) {
+        if (words.some(word => message.includes(word))) {
+          switch (category) {
+            case 'installation':
+              return "Our professional team handles elevator installations with precision and care. We offer free site surveys and can provide a detailed installation plan tailored to your building. Would you like to schedule a consultation?";
+            
+            case 'maintenance':
+              return "We provide 24/7 maintenance services with rapid response times. Our maintenance plans include regular inspections, repairs, and emergency services. All our technicians are certified and experienced. Would you like to know more about our maintenance packages?";
+            
+            case 'safety':
+              return "Safety is our top priority! Our elevators feature advanced safety systems including emergency brakes, backup power, and 24/7 monitoring. All installations meet or exceed international safety standards. We also provide regular safety inspections and certifications.";
+            
+            case 'cost':
+              return "Our pricing varies based on your specific needs and requirements. We offer competitive rates and flexible payment plans. Would you like to get a personalized quote? Please provide your contact details, and our team will reach out to you.";
+            
+            case 'contact':
+              return "You can reach us at: \n📞 Phone: 985-1003250\n📧 Email: info@elevatorcompany.com \nOur support team is available 24/7 for emergency services. Would you like us to contact you?";
+            
+            case 'hours':
+              return "Our office is open Monday to Friday, 9:00 AM to 6:00 PM. However, our emergency maintenance service is available 24/7, 365 days a year. How can we assist you today?";
+            
+            case 'types':
+              return "We offer various elevator types including:\n• Passenger Elevators\n• Freight Elevators\n• Panoramic Elevators\n• High-Speed Elevators\n• Smart Elevators\nWhich type interests you the most?";
+            
+            case 'company':
+              return "TES has been a leading elevator solutions provider since 2010. We specialize in installation, maintenance, and modernization of all types of elevators. Our commitment to quality and safety has made us a trusted name in the industry.";
+            
+            case 'location':
+              return "Our main office is located in Kathmandu, Kalanki Chakrapath Chowk, 3rd. Floor Above Kumari Bank -Kalanki Branch Kathmandu Metropolitan City, ward no. 14, . We serve clients nationwide with local service centers in major cities. Would you like to find the nearest service center to your location?";
+          }
+        }
+      }
+
+      // Default response for unrecognized queries
+      return "I'd be happy to help you with that. For the most accurate information, would you like me to connect you with our customer service team? You can reach us at 01-15219150 or info@elevatorcompany.com.";
+    }
+
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    function addMessage(text, sender) {
+      const messages = document.getElementById('chat-messages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `message ${sender}-message`;
+      
+      if (sender === 'bot') {
+        messageDiv.innerHTML = `
+          <i class="fas fa-robot bot-icon"></i>
+          <div class="message-content">${text}</div>
+        `;
+      } else {
+        messageDiv.innerHTML = `
+          <div class="message-content">${text}</div>
+        `;
+      }
+      
+      messages.appendChild(messageDiv);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    // Chatbot UI Controls
+    document.addEventListener('DOMContentLoaded', function() {
+      const chatCircle = document.getElementById('chat-circle');
+      const chatbox = document.getElementById('chatbot');
+      const chatClose = document.getElementById('chat-close');
+
+      chatCircle.addEventListener('click', function() {
+        chatbox.classList.add('active');
+        chatCircle.style.display = 'none';
+        
+        // Remove notification dot when chat is opened
+        document.querySelector('.notification-dot').style.display = 'none';
+      });
+
+      chatClose.addEventListener('click', function() {
+        chatbox.classList.remove('active');
+        chatCircle.style.display = 'flex';
+      });
+    });
+  </script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Show loading state
+      const submitButton = this.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = 'Sending...';
+      submitButton.disabled = true;
+      
+      // Submit the form
+      fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this)
+      })
+      .then(response => {
+        // Reset form and show success message
+        this.reset();
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+        
+        // Show popup
+        const popup = document.getElementById('thankYouPopup');
+        popup.classList.add('show');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+      });
+    });
+
+    // Function to close popup
+    function closePopup() {
+      document.getElementById('thankYouPopup').classList.remove('show');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Navbar Styling */
+.navbar {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  padding: 5px 0;
+}
+
+.navbar:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff;
+  font-weight: 500;
+  margin: 0 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.navbar-nav .nav-link::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ffc107;
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc107;
+}
+
+.navbar-nav .nav-link:hover::before {
+  width: 100%;
+}
+
+.navbar-toggler {
+  border: 2px solid #ffffff;
+  padding: 6px 10px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+  transform: rotate(180deg);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-title span {
+  color: #ffc107;
+}
+
+.navbar-brand img {
+  max-height: 40px;
+  width: auto;
+}
+
+/* Class for animation triggers */
+.animate-fadeIn {
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+.animate-scaleUp {
+  animation: scaleUp 1.5s ease-in-out forwards;
+}
+
+.animate-slideIn {
+  animation: slideIn 1.5s ease-in-out forwards;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Hover Effects */
+.navbar-nav .nav-link {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc107;
+  transform: scale(1.1);
+}
+
+.btn {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #d39e00;
+  transform: translateY(-5px);
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  transition: color 0.3s ease;
+}
+
+.card-title:hover {
+  color: #ffc107;
+}
+
+.card-body p {
+  transition: color 0.3s ease;
+}
+
+.card-body p:hover {
+  color: #555;
+}
+
+img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.hero h1:hover {
+  color: #ffc107;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.hero p:hover {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+footer {
+  transition: background-color 0.3s ease;
+}
+
+footer:hover {
+  background-color: #333;
+}
